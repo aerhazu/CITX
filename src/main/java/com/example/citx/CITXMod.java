@@ -6,7 +6,6 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
@@ -16,6 +15,7 @@ import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.component.DataComponentTypes;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -147,7 +147,7 @@ public class CITXMod implements ClientModInitializer {
 
         String newName = (baseName + extension).replaceAll("__+", "_");
 
-        stack.setCustomName(Text.literal(newName));
+        stack.set(DataComponentTypes.CUSTOM_NAME, Text.literal(newName));
 
         refreshItem(client);
 
@@ -173,7 +173,7 @@ public class CITXMod implements ClientModInitializer {
 
         ItemStack stack = getHeldItem(client);
 
-        stack.setCustomName(Text.literal(name));
+        stack.set(DataComponentTypes.CUSTOM_NAME, Text.literal(name));
 
         refreshItem(client);
 
@@ -199,7 +199,7 @@ public class CITXMod implements ClientModInitializer {
 
         ItemStack stack = getHeldItem(client);
 
-        stack.setCustomName(null);
+        stack.remove(DataComponentTypes.CUSTOM_NAME);
 
         refreshItem(client);
 
@@ -392,7 +392,6 @@ public class CITXMod implements ClientModInitializer {
 
         client.player.playSound(
                 SoundEvents.BLOCK_AMETHYST_CLUSTER_HIT,
-                SoundCategory.PLAYERS,
                 0.2F,
                 1.00F
         );

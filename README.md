@@ -19,7 +19,7 @@ Made for builders, creators, and anyone tired of the anvil clanking.
 <p align="center">
 <img src="https://img.shields.io/badge/Loader-Fabric-orange">
 <img src="https://img.shields.io/badge/Environment-Client-blue">
-<img src="https://img.shields.io/badge/License-MIT-success">
+<img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg">
 </p>
 
 ---
